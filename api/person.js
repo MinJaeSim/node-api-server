@@ -16,9 +16,8 @@ router.get('/', async (req, res, next) => {
         connection.query("SELECT * FROM Person", function(err, rows, fields) {
             if (!err) {
                 console.log('The solution is: ', rows);
-		res.status(200).json(rows);
-	    }
-            else
+		        res.status(200).json(rows);
+	        }else
                 console.log('Error while performing Query.', err);
         });
     } catch (err) {

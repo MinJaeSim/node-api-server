@@ -5,66 +5,62 @@ const fs = require('fs');
 const path = require('path');
 const rp = require('request-promise');
 const _ = require('lodash');
+const cheerio = require('cheerio');
 
 const PATHS = {
-    raw: path.join(__dirname, '../data/raw')
+    raw: path.join(__dirname, '../data')
   };
 
-async function run() {
-  let count404 = 0;
+// let index = 1;
+let index = 1;
 
-  // 게시글 인덱스 21 부터 수집함
-  let index = 1;
-  
-
-  // 파일을 저장할 폴더가 없으면 생성
+async function crawling() {
   try {
     fs.statSync(`${PATHS.raw}`);
   } catch (err) {
     console.log('Folder doesn\'t exist, so I made the folder');
     fs.mkdirSync(`${PATHS.raw}`, (err, folder) => {
-      if (err) throw err;
+      if (err) 
+          return fail;
       console.log(folder);
     });
   }
 
-  return;
-
-  console.log(`init from: ${index} ...`);
   while (index <= 20) {
     console.log(`collect from: ${index} ...`);
     const path = `https://guide.michelin.co.kr/ko/restaurant/page/${index}`;
 
     const options = {
       uri : `https://guide.michelin.co.kr/ko/restaurant/page/${index}`,
+      method : "GET",
       timeout : 30000
     };
 
     try {
-      const page = await rp(options);
+      let page = await rp(options);
+      let $ = cheerio.load(page);
+      const uri = $("#main > div.container_wrap.container_wrap_first.main_color.fullsize > div > main > div.restaurant-list > div:nth-child(1) > article > div > div > div.restaurant-list-header > h3 > a").attr('href');
     
-      // 파일 로컬에 저장
-      fs.writeFileSync(`${PATHS.raw}/${point}/${index}.html`, page);
+      options.uri = uri;
+      page = await rp(options);
+      fs.writeFileSync(`${PATHS.raw}/${index}_page_ko.html`, page);
+
+      options.uri = uri.replace("ko","en"); 
+      page = await rp(options);
+      fs.writeFileSync(`${PATHS.raw}/${index}_page_en.html`, page);
+      
       console.log("saving file");
-
     } catch (e) {
-      if (e.statusCode === 404 || e.message) {
-          console.log("test")
-      }
+        console.log(e);
+        return false;
     }
 
+    index++;
     console.log('wait');
-    await wait(3000);
-    try {
-      if (count404 > 20 ) {
-        console.log("BYE BYE");
-        return;
-      }
-    } catch (err) {
-      console.log(err);
-      process.exit();
-    }
+    await wait(500);
   }
+
+  return true;
 }
 
 function wait(time) {
@@ -73,5 +69,21 @@ function wait(time) {
       setTimeout(() => resolve(), time);
     });
 }
+router.get('/', async (req, res, next) => {
+    try {
+        const result = await crawling();
+        res.status(200).json({
+            "result" : "success",
+            "last" : index
+        });
+    } catch(e) {
+        res.status(400).json({
+            "result" : "fail",
+            "last" : index
+        });
+    }
+    console.log("Bye Crawler");
+    return;
+});
 
 module.exports = router;

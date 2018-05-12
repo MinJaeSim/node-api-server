@@ -57,5 +57,10 @@ typings/
 # dotenv environment variables file
 .env
 
+# custom ignore
+
 # private key file
 db-config.json
+
+# data
+.html
