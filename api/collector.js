@@ -61,10 +61,27 @@ async function crawling() {
           "Grade" : 0,
           "Phone_Num" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(2) > p").text().trim().split(" ")[0]}`,
           "Homepage" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(3) > p > a").text()}`,
-          "Price" : `${_$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-15.el_after_av_heading.el_before_av_two_third.restaurant-details > section > div > ul:nth-child(4) > li").text()}`,
+          "Price" : 0,
         }
-        let grade = _$("#av_section_2 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-11.el_after_av_two_third.avia-builder-el-last.restaurant-services > section > div > table > tbody > tr:nth-child(1) > td").text().length;
+        
+        let p = _$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-15.el_after_av_heading.el_before_av_two_third.restaurant-details > section > div > ul:nth-child(4) > li").text();
+    
+        p = p.replace(/[^0-9^~)]/g,"");
+        p = p.replace(")","~");
+        p = p.replace(")","~");
+        p = p.replace(")","~");
 
+        const arr = p.split("~");
+        let price = 0;
+        arr.forEach(v => {
+          v = v.replace(/[^0-9]/g,"");
+          price += v*1;
+        });
+
+        price = Math.round(price / arr.length);
+        ko_res.Price = price;
+
+        let grade = _$("#av_section_2 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-11.el_after_av_two_third.avia-builder-el-last.restaurant-services > section > div > table > tbody > tr:nth-child(1) > td").text().length;
         switch(grade) {
           case 26 :
             ko_res.Grade = 1; // 3스타
@@ -95,7 +112,7 @@ async function crawling() {
           "Grade" : ko_res.Grade,
           "Phone_Num" : `${ko_res.Phone_Num}`,
           "Homepage" : `${ko_res.Homepage}`,
-          "Price" : `${__$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-15.el_after_av_heading.el_before_av_two_third.restaurant-details > section > div > ul:nth-child(4) > li").text()}`,
+          "Price" : ko_res.Price,
         }
 
         const location = __$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-17.el_after_av_one_third.avia-builder-el-last.restaurant-map > section > div > ul > li > span").text().split(" ")
@@ -108,7 +125,7 @@ async function crawling() {
 
         const g = {
           "Grade" : ko_res.Grade,
-          "Avg_Price" : 0,
+          "Avg_Price" : ko_res.Price,
           "GNum" : RNumber
         }
 
@@ -136,7 +153,6 @@ async function crawling() {
       console.log(e);
       return false;
     }
-
     index++;
     console.log('wait');
     await wait(500);
