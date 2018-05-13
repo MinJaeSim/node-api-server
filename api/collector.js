@@ -108,10 +108,10 @@ async function crawling() {
 
         const en_res = {
           "RNumber" : ko_res.RNumber,
-          "EName" : `${__$("#av_section_1 > div > main > div > div > section > div > div > h2").text()}`,
+          "EName" : __$("#av_section_1 > div > main > div > div > section > div > div > h2").text(),
           "Grade" : ko_res.Grade,
-          "Phone_Num" : `${ko_res.Phone_Num}`,
-          "Homepage" : `${ko_res.Homepage}`,
+          "Phone_Num" : ko_res.Phone_Num,
+          "Homepage" : ko_res.Homepage,
           "Price" : ko_res.Price,
         }
 
@@ -119,8 +119,8 @@ async function crawling() {
         
         const loca = {
           "RNumber" : ko_res.RNumber,
-          "Location_Kor" : `${_$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-17.el_after_av_one_third.avia-builder-el-last.restaurant-map > section > div > ul > li > span").text().split(" ")[0]}`,
-          "Location_Eng" :`${location[location.length - 2]}`
+          "Location_Kor" : _$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-17.el_after_av_one_third.avia-builder-el-last.restaurant-map > section > div > ul > li > span").text().split(" ")[0],
+          "Location_Eng" :location[location.length - 2]
         }
 
         const g = {
@@ -131,8 +131,8 @@ async function crawling() {
 
         const dish = {
           "RNumber" : RNumber,
-          "Cat_Kor" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text()}`,
-          "Cat_Eng" : `${__$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text()}`
+          "Cat_Kor" : _$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text(),
+          "Cat_Eng" : __$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text()
         }
 
         ko_restaurants.push(ko_res);
