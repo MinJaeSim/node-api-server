@@ -13,7 +13,7 @@ connection.connect();
 
 router.get('/', async (req, res, next) => {
     try {
-        connection.query("SELECT * FROM Person", function(err, rows, fields) {
+        connection.query("SELECT * FROM Michelin_Kor", function(err, rows, fields) {
             if (!err) {
                 console.log('The solution is: ', rows);
 		        res.status(200).json(rows);
