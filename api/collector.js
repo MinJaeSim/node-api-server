@@ -56,9 +56,9 @@ async function crawling() {
         const _$ = cheerio.load(page);
         
         let ko_res = {
-          "RNumber" : `${RNumber}`,
+          "RNumber" : RNumber,
           "KName" : `${_$("#av_section_1 > div > main > div > div > section > div > div > h2").text()}`,
-          "Grade" : "0",
+          "Grade" : 0,
           "Phone_Num" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(2) > p").text().trim().split(" ")[0]}`,
           "Homepage" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(3) > p > a").text()}`,
           "Price" : `${_$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-15.el_after_av_heading.el_before_av_two_third.restaurant-details > section > div > ul:nth-child(4) > li").text()}`,
@@ -90,9 +90,9 @@ async function crawling() {
         const __$ = cheerio.load(page);
 
         const en_res = {
-          "RNumber" : `${ko_res.RNumber}`,
+          "RNumber" : ko_res.RNumber,
           "EName" : `${__$("#av_section_1 > div > main > div > div > section > div > div > h2").text()}`,
-          "Grade" : `${ko_res.Grade}`,
+          "Grade" : ko_res.Grade,
           "Phone_Num" : `${ko_res.Phone_Num}`,
           "Homepage" : `${ko_res.Homepage}`,
           "Price" : `${__$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-15.el_after_av_heading.el_before_av_two_third.restaurant-details > section > div > ul:nth-child(4) > li").text()}`,
@@ -101,19 +101,19 @@ async function crawling() {
         const location = __$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-17.el_after_av_one_third.avia-builder-el-last.restaurant-map > section > div > ul > li > span").text().split(" ")
         
         const loca = {
-          "RNumber" : `${ko_res.RNumber}`,
+          "RNumber" : ko_res.RNumber,
           "Location_Kor" : `${_$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-17.el_after_av_one_third.avia-builder-el-last.restaurant-map > section > div > ul > li > span").text().split(" ")[0]}`,
           "Location_Eng" :`${location[location.length - 2]}`
         }
 
         const g = {
-          "Grade" : `${ko_res.Grade}`,
-          "Avg_Price" : '0',
-          "GNum" : `${RNumber}`
+          "Grade" : ko_res.Grade,
+          "Avg_Price" : 0,
+          "GNum" : RNumber
         }
 
         const dish = {
-          "RNumber" : `${RNumber}`,
+          "RNumber" : RNumber,
           "Cat_Kor" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text()}`,
           "Cat_Eng" : `${__$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text()}`
         }
