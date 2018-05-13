@@ -14,8 +14,12 @@ const PATHS = {
 
 let index = 1;
 let RNumber = 0;
+
 let ko_restaurants = [];
 let en_restaurants = [];
+let locations = [];
+let grades = [];
+let dishes = [];
 
 async function crawling() {
   try {
@@ -49,60 +53,76 @@ async function crawling() {
         let uri = $(`#main > div.container_wrap.container_wrap_first.main_color.fullsize > div > main > div.restaurant-list > div:nth-child(${childNumber}) > article > div > div > div.restaurant-list-header > h3 > a`).attr('href');
         options.uri = uri;
         page = await rp(options);
-
-        let _$ = cheerio.load(page);
+        const _$ = cheerio.load(page);
         
-        let data = {
+        let ko_res = {
           "RNumber" : `${RNumber}`,
           "KName" : `${_$("#av_section_1 > div > main > div > div > section > div > div > h2").text()}`,
           "Grade" : "0",
           "Phone_Num" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(2) > p").text().trim().split(" ")[0]}`,
           "Homepage" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(3) > p > a").text()}`,
           "Price" : `${_$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-15.el_after_av_heading.el_before_av_two_third.restaurant-details > section > div > ul:nth-child(4) > li").text()}`,
-          "Locatin" : `${_$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-17.el_after_av_one_third.avia-builder-el-last.restaurant-map > section > div > ul > li > span").text().split(" ")[0]}`,
-          "Category" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text()}`
         }
         let grade = _$("#av_section_2 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-11.el_after_av_two_third.avia-builder-el-last.restaurant-services > section > div > table > tbody > tr:nth-child(1) > td").text().length;
 
         switch(grade) {
           case 26 :
-            data.Grade = 1; // 3스타
+            ko_res.Grade = 1; // 3스타
             break;
           case 25 : 
-            data.Grade = 2;
+            ko_res.Grade = 2;
             break;
-          case 6 :
-            data.Grade = 3;
+          case 7 :
+            ko_res.Grade = 3;
           case 38 :
-            data.Grade = 4;
+            ko_res.Grade = 4;
             break;
           case 19 :
-            data.Grade = 5;
+            ko_res.Grade = 5;
             break;
           default : 
-            data.Grade = 0;
+            ko_res.Grade = 0;
             break;
         }
-
-        ko_restaurants.push(data);
 
         options.uri = uri.replace("ko","en");
         page = await rp(options);
-        _$ = cheerio.load(page);
+        const __$ = cheerio.load(page);
 
-        const location = _$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-17.el_after_av_one_third.avia-builder-el-last.restaurant-map > section > div > ul > li > span").text().split(" ")
-        const en_data = {
-          "RNumber" : `${data.RNumber}`,
-          "EName" : `${_$("#av_section_1 > div > main > div > div > section > div > div > h2").text()}`,
-          "Grade" : `${data.Grade}`,
-          "Phone_Num" : `${data.Phone_Num}`,
-          "Homepage" : `${data.Homepage}`,
-          "Price" : `${_$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-15.el_after_av_heading.el_before_av_two_third.restaurant-details > section > div > ul:nth-child(4) > li").text()}`,
-          "Locatin" : `${location[location.length - 2]}`,
-          "Category" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text()}`
+        const en_res = {
+          "RNumber" : `${ko_res.RNumber}`,
+          "EName" : `${__$("#av_section_1 > div > main > div > div > section > div > div > h2").text()}`,
+          "Grade" : `${ko_res.Grade}`,
+          "Phone_Num" : `${ko_res.Phone_Num}`,
+          "Homepage" : `${ko_res.Homepage}`,
+          "Price" : `${__$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-15.el_after_av_heading.el_before_av_two_third.restaurant-details > section > div > ul:nth-child(4) > li").text()}`,
         }
 
-        en_restaurants.push(en_data);
+        const location = __$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-17.el_after_av_one_third.avia-builder-el-last.restaurant-map > section > div > ul > li > span").text().split(" ")
+        
+        const loca = {
+          "RNumber" : `${ko_res.RNumber}`,
+          "Location_Kor" : `${_$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-17.el_after_av_one_third.avia-builder-el-last.restaurant-map > section > div > ul > li > span").text().split(" ")[0]}`,
+          "Location_Eng" :`${location[location.length - 2]}`
+        }
+
+        const g = {
+          "Grade" : `${ko_res.Grade}`,
+          "Avg_Price" : '0',
+          "GNum" : `${RNumber}`
+        }
+
+        const dish = {
+          "RNumber" : `${RNumber}`,
+          "Cat_Kor" : `${_$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text()}`,
+          "Cat_Eng" : `${__$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text()}`
+        }
+
+        ko_restaurants.push(ko_res);
+        en_restaurants.push(en_res);
+        locations.push(loca);
+        grades.push(g);
+        dishes.push(dish);
 
         RNumber++;
         childNumber++;
@@ -122,16 +142,31 @@ async function crawling() {
     await wait(500);
   }
 
-  const ko_fields = ['RNmber', 'KName','Grade', 'Phone_Num', 'Homepage', 'Price', 'Location', 'Category'];
-  const en_fields = ['RNmber', 'EName','Grade', 'Phone_Num', 'Homepage', 'Price', 'Location', 'Category'];
-  
+  const ko_fields = ['RNumber', 'KName','Grade', 'Phone_Num', 'Homepage', 'Price'];
+  const en_fields = ['RNumber', 'EName','Grade', 'Phone_Num', 'Homepage', 'Price'];
+  const loc_fields = ['RNumber', "Location_Kor", "Location_Eng"];
+  const grade_fields = ['Grade', 'Avg_Price', 'GNum'];
+  const dish_fields = ['RNumber', 'Cat_Kor', 'Cat_Eng'];
+
   let json2csvParser = new json2csv(ko_fields);
   let csv = json2csvParser.parse(ko_restaurants);
-  fs.writeFileSync(`${PATHS.raw}/ko.csv`, csv);
+  fs.writeFileSync(`${PATHS.raw}/ko_res.csv`, csv);
 
   json2csvParser = new json2csv(en_fields);
   csv = json2csvParser.parse(en_restaurants);
-  fs.writeFileSync(`${PATHS.raw}/en.csv`, csv);
+  fs.writeFileSync(`${PATHS.raw}/en_res.csv`, csv);
+
+  json2csvParser = new json2csv(loc_fields);
+  csv = json2csvParser.parse(locations);
+  fs.writeFileSync(`${PATHS.raw}/loc.csv`, csv);
+
+  json2csvParser = new json2csv(grade_fields);
+  csv = json2csvParser.parse(grades);
+  fs.writeFileSync(`${PATHS.raw}/grade.csv`, csv);
+
+  json2csvParser = new json2csv(dish_fields);
+  csv = json2csvParser.parse(dishes);
+  fs.writeFileSync(`${PATHS.raw}/dish.csv`, csv);
 
   return true;
 }

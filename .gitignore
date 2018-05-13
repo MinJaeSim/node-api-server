@@ -64,3 +64,5 @@ db-config.json
 
 # data
 .html
+
+.DS_Store
