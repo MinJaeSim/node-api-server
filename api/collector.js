@@ -67,10 +67,8 @@ async function crawling() {
         let p = _$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-15.el_after_av_heading.el_before_av_two_third.restaurant-details > section > div > ul:nth-child(4) > li").text();
     
         p = p.replace(/[^0-9^~)]/g,"");
-        p = p.replace(")","~");
-        p = p.replace(")","~");
-        p = p.replace(")","~");
-
+        p = p.replace(/\)/g,"~");
+        
         const arr = p.split("~");
         let price = 0;
         arr.forEach(v => {
@@ -78,7 +76,10 @@ async function crawling() {
           price += v*1;
         });
 
+        price /= 1000;
         price = Math.round(price / arr.length);
+        price *= 1000;
+
         ko_res.Price = price;
 
         let grade = _$("#av_section_2 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-11.el_after_av_two_third.avia-builder-el-last.restaurant-services > section > div > table > tbody > tr:nth-child(1) > td").text().length;
@@ -166,22 +167,27 @@ async function crawling() {
 
   let json2csvParser = new json2csv(ko_fields);
   let csv = json2csvParser.parse(ko_restaurants);
+  csv = csv.replace(/\"/g,"");
   fs.writeFileSync(`${PATHS.raw}/ko_res.csv`, csv);
 
   json2csvParser = new json2csv(en_fields);
   csv = json2csvParser.parse(en_restaurants);
+  csv = csv.replace(/\"/g,"");
   fs.writeFileSync(`${PATHS.raw}/en_res.csv`, csv);
 
   json2csvParser = new json2csv(loc_fields);
   csv = json2csvParser.parse(locations);
+  csv = csv.replace(/\"/g,"");
   fs.writeFileSync(`${PATHS.raw}/loc.csv`, csv);
 
   json2csvParser = new json2csv(grade_fields);
   csv = json2csvParser.parse(grades);
+  csv = csv.replace(/\"/g,"");
   fs.writeFileSync(`${PATHS.raw}/grade.csv`, csv);
 
   json2csvParser = new json2csv(dish_fields);
   csv = json2csvParser.parse(dishes);
+  csv = csv.replace(/\"/g,"");
   fs.writeFileSync(`${PATHS.raw}/dish.csv`, csv);
 
   return true;

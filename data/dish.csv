@@ -1,174 +1,174 @@
-"RNumber","Cat_Kor","Cat_Eng"
-0,"한식","Korean"
-1,"만두","Mandu"
-2,"게장","Gejang"
-3,"삼계탕","Samgye-tang"
-4,"프렌치","French"
-5,"바비큐","Barbecue"
-6,"한식","Korean"
-7,"우동","Udon"
-8,"만두","Mandu"
-9,"한식","Korean"
-10,"프렌치","French"
-11,"한식","Korean"
-12,"게장","Gejang"
-13,"냉면","Naengmyeon"
-14,"냉면","Naengmyeon"
-15,"한식","Korean"
-16,"프렌치 컨템포러리","French contemporary"
-17,"한식","Korean"
-18,"도가니탕","Dogani-tang"
-19,"프렌치 컨템포러리","French contemporary"
-20,"중식","Chinese"
-21,"이노베이티브","Innovative"
-22,"이탈리안 컨템포러리","Italian contemporary"
-23,"이탈리안","Italian"
-24,"한식","Korean"
-25,"스페니쉬","Spanish"
-26,"이탈리안","Italian"
-27,"이탈리안","Italian"
-28,"이탈리안","Italian"
-29,"프렌치","French"
-30,"한식","Korean"
-31,"프렌치","French"
-32,"프렌치","French"
-33,"프렌치","French"
-34,"프렌치","French"
-35,"이노베이티브","Innovative"
-36,"프렌치","French"
-37,"이탈리안 컨템포러리","Italian contemporary"
-38,"프렌치 컨템포러리","French contemporary"
-39,"설렁탕","Seolleongtang"
-40,"설렁탕","Seolleongtang"
-41,"만두","Mandu"
-42,"족발","Jokbal"
-43,"프렌치","French"
-44,"칼국수","Kal-guksu"
-45,"일식","Japanese"
-46,"비빔밥","Bibimbap"
-47,"칼국수","Kal-guksu"
-48,"한식","Korean"
-49,"소바","Soba"
-50,"소바","Soba"
-51,"코리안 컨템포러리","Korean contemporary"
-52,"메밀 국수","Memil-guksu"
-53,"재패니즈 컨템퍼러리","Japanese contemporary"
-54,"한식","Korean"
-55,"칼국수","Kal-guksu"
-56,"코리안 컨템포러리","Korean contemporary"
-57,"사찰음식","Temple cuisine"
-58,"삼계탕","Samgye-tang"
-59,"두부","Dubu"
-60,"중식","Chinese"
-61,"바비큐","Barbecue"
-62,"바비큐","Barbecue"
-63,"바비큐","Barbecue"
-64,"이탈리안","Italian"
-65,"바비큐","Barbecue"
-66,"이탈리안","Italian"
-67,"프렌치 컨템포러리","French contemporary"
-68,"스테이크하우스","Steakhouse"
-69,"이탈리안","Italian"
-70,"냉면","Naengmyeon"
-71,"냉면","Naengmyeon"
-72,"유러피안 컨템포러리","European contemporary"
-73,"육회","Yukhoe"
-74,"한식","Korean"
-75,"이탈리안","Italian"
-76,"프렌치","French"
-77,"한식","Korean"
-78,"바비큐","Barbecue"
-79,"수제비","Sujebi"
-80,"코리안 컨템포러리","Korean contemporary"
-81,"이탈리안","Italian"
-82,"한식","Korean"
-83,"타이","Thai"
-84,"소바","Soba"
-85,"스시","Sushi"
-86,"스시","Sushi"
-87,"스시","Sushi"
-88,"스시","Sushi"
-89,"스시","Sushi"
-90,"스시","Sushi"
-91,"이노베이티브","Innovative"
-92,"프렌치 컨템포러리","French contemporary"
-93,"스테이크하우스","Steakhouse"
-94,"한식","Korean"
-95,"한식","Korean"
-96,"이노베이티브","Innovative"
-97,"메밀 국수","Memil-guksu"
-98,"베트남","Vietnamese"
-99,"불고기","Bulgogi"
-100,"족발","Jokbal"
-101,"바비큐","Barbecue"
-102,"이탈리안","Italian"
-103,"냉면","Naengmyeon"
-104,"한식","Korean"
-105,"프렌치 컨템포러리","French contemporary"
-106,"돼지국밥","Dwaeji-gukbap"
-107,"한식","Korean"
-108,"코리안 컨템포러리","Korean contemporary"
-109,"설렁탕","Seolleongtang"
-110,"추어탕","Chueo-tang"
-111,"한식","Korean"
-112,"바비큐","Barbecue"
-113,"냉면","Naengmyeon"
-114,"스시","Sushi"
-115,"타이완","Taiwanese"
-116,"바비큐","Barbecue"
-117,"중식","Chinese"
-118,"우동","Udon"
-119,"바비큐","Barbecue"
-120,"설렁탕","Seolleongtang"
-121,"코리안 컨템포러리","Korean contemporary"
-122,"바비큐","Barbecue"
-123,"이탈리안","Italian"
-124,"이노베이티브","Innovative"
-125,"한식","Korean"
-126,"칼국수","Kal-guksu"
-127,"만두","Mandu"
-128,"코리안 컨템포러리","Korean contemporary"
-129,"냉면","Naengmyeon"
-130,"이노베이티브","Innovative"
-131,"아시안","Asian"
-132,"코리안 컨템포러리","Korean contemporary"
-133,"프렌치 컨템포러리","French contemporary"
-134,"냉면","Naengmyeon"
-135,"게장","Gejang"
-136,"중식","Chinese"
-137,"칼국수","Kal-guksu"
-138,"한식","Korean"
-139,"이노베이티브","Innovative"
-140,"바비큐","Barbecue"
-141,"일식","Japanese"
-142,"이탈리안 컨템포러리","Italian contemporary"
-143,"스시","Sushi"
-144,"프렌치","French"
-145,"중식","Chinese"
-146,"게장","Gejang"
-147,"프렌치","French"
-148,"바비큐","Barbecue"
-149,"프렌치","French"
-150,"유러피안 컨템포러리","European contemporary"
-151,"프렌치 컨템포러리","French contemporary"
-152,"타이","Thai"
-153,"이탈리안","Italian"
-154,"프렌치","French"
-155,"프렌치","French"
-156,"냉면","Naengmyeon"
-157,"한식","Korean"
-158,"아메리칸 컨템포러리","American contemporary"
-159,"두부","Dubu"
-160,"한식","Korean"
-161,"냉면","Naengmyeon"
-162,"곰탕","Gom-tang"
-163,"한식","Korean"
-164,"일식","Japanese"
-165,"한식","Korean"
-166,"족발","Jokbal"
-167,"한식","Korean"
-168,"중식","Chinese"
-169,"중식","Chinese"
-170,"게장","Gejang"
-171,"두부","Dubu"
-172,"칼국수","Kal-guksu"
+RNumber,Cat_Kor,Cat_Eng
+0,한식,Korean
+1,만두,Mandu
+2,게장,Gejang
+3,삼계탕,Samgye-tang
+4,프렌치,French
+5,바비큐,Barbecue
+6,한식,Korean
+7,우동,Udon
+8,만두,Mandu
+9,한식,Korean
+10,프렌치,French
+11,한식,Korean
+12,게장,Gejang
+13,냉면,Naengmyeon
+14,냉면,Naengmyeon
+15,한식,Korean
+16,프렌치 컨템포러리,French contemporary
+17,한식,Korean
+18,도가니탕,Dogani-tang
+19,프렌치 컨템포러리,French contemporary
+20,중식,Chinese
+21,이노베이티브,Innovative
+22,이탈리안 컨템포러리,Italian contemporary
+23,이탈리안,Italian
+24,한식,Korean
+25,스페니쉬,Spanish
+26,이탈리안,Italian
+27,이탈리안,Italian
+28,이탈리안,Italian
+29,프렌치,French
+30,한식,Korean
+31,프렌치,French
+32,프렌치,French
+33,프렌치,French
+34,프렌치,French
+35,이노베이티브,Innovative
+36,프렌치,French
+37,이탈리안 컨템포러리,Italian contemporary
+38,프렌치 컨템포러리,French contemporary
+39,설렁탕,Seolleongtang
+40,설렁탕,Seolleongtang
+41,만두,Mandu
+42,족발,Jokbal
+43,프렌치,French
+44,칼국수,Kal-guksu
+45,일식,Japanese
+46,비빔밥,Bibimbap
+47,칼국수,Kal-guksu
+48,한식,Korean
+49,소바,Soba
+50,소바,Soba
+51,코리안 컨템포러리,Korean contemporary
+52,메밀 국수,Memil-guksu
+53,재패니즈 컨템퍼러리,Japanese contemporary
+54,한식,Korean
+55,칼국수,Kal-guksu
+56,코리안 컨템포러리,Korean contemporary
+57,사찰음식,Temple cuisine
+58,삼계탕,Samgye-tang
+59,두부,Dubu
+60,중식,Chinese
+61,바비큐,Barbecue
+62,바비큐,Barbecue
+63,바비큐,Barbecue
+64,이탈리안,Italian
+65,바비큐,Barbecue
+66,이탈리안,Italian
+67,프렌치 컨템포러리,French contemporary
+68,스테이크하우스,Steakhouse
+69,이탈리안,Italian
+70,냉면,Naengmyeon
+71,냉면,Naengmyeon
+72,유러피안 컨템포러리,European contemporary
+73,육회,Yukhoe
+74,한식,Korean
+75,이탈리안,Italian
+76,프렌치,French
+77,한식,Korean
+78,바비큐,Barbecue
+79,수제비,Sujebi
+80,코리안 컨템포러리,Korean contemporary
+81,이탈리안,Italian
+82,한식,Korean
+83,타이,Thai
+84,소바,Soba
+85,스시,Sushi
+86,스시,Sushi
+87,스시,Sushi
+88,스시,Sushi
+89,스시,Sushi
+90,스시,Sushi
+91,이노베이티브,Innovative
+92,프렌치 컨템포러리,French contemporary
+93,스테이크하우스,Steakhouse
+94,한식,Korean
+95,한식,Korean
+96,이노베이티브,Innovative
+97,메밀 국수,Memil-guksu
+98,베트남,Vietnamese
+99,불고기,Bulgogi
+100,족발,Jokbal
+101,바비큐,Barbecue
+102,이탈리안,Italian
+103,냉면,Naengmyeon
+104,한식,Korean
+105,프렌치 컨템포러리,French contemporary
+106,돼지국밥,Dwaeji-gukbap
+107,한식,Korean
+108,코리안 컨템포러리,Korean contemporary
+109,설렁탕,Seolleongtang
+110,추어탕,Chueo-tang
+111,한식,Korean
+112,바비큐,Barbecue
+113,냉면,Naengmyeon
+114,스시,Sushi
+115,타이완,Taiwanese
+116,바비큐,Barbecue
+117,중식,Chinese
+118,우동,Udon
+119,바비큐,Barbecue
+120,설렁탕,Seolleongtang
+121,코리안 컨템포러리,Korean contemporary
+122,바비큐,Barbecue
+123,이탈리안,Italian
+124,이노베이티브,Innovative
+125,한식,Korean
+126,칼국수,Kal-guksu
+127,만두,Mandu
+128,코리안 컨템포러리,Korean contemporary
+129,냉면,Naengmyeon
+130,이노베이티브,Innovative
+131,아시안,Asian
+132,코리안 컨템포러리,Korean contemporary
+133,프렌치 컨템포러리,French contemporary
+134,냉면,Naengmyeon
+135,게장,Gejang
+136,중식,Chinese
+137,칼국수,Kal-guksu
+138,한식,Korean
+139,이노베이티브,Innovative
+140,바비큐,Barbecue
+141,일식,Japanese
+142,이탈리안 컨템포러리,Italian contemporary
+143,스시,Sushi
+144,프렌치,French
+145,중식,Chinese
+146,게장,Gejang
+147,프렌치,French
+148,바비큐,Barbecue
+149,프렌치,French
+150,유러피안 컨템포러리,European contemporary
+151,프렌치 컨템포러리,French contemporary
+152,타이,Thai
+153,이탈리안,Italian
+154,프렌치,French
+155,프렌치,French
+156,냉면,Naengmyeon
+157,한식,Korean
+158,아메리칸 컨템포러리,American contemporary
+159,두부,Dubu
+160,한식,Korean
+161,냉면,Naengmyeon
+162,곰탕,Gom-tang
+163,한식,Korean
+164,일식,Japanese
+165,한식,Korean
+166,족발,Jokbal
+167,한식,Korean
+168,중식,Chinese
+169,중식,Chinese
+170,게장,Gejang
+171,두부,Dubu
+172,칼국수,Kal-guksu
