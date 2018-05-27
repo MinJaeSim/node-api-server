@@ -20,6 +20,7 @@ let en_restaurants = [];
 let locations = [];
 let grades = [];
 let dishes = [];
+let images = [];
 
 async function crawling() {
   try {
@@ -54,7 +55,7 @@ async function crawling() {
         options.uri = uri;
         page = await rp(options);
         const _$ = cheerio.load(page);
-        
+
         let ko_res = {
           "RNumber" : RNumber,
           "KName" : _$("#av_section_1 > div > main > div > div > section > div > div > h2").text(),
@@ -136,11 +137,29 @@ async function crawling() {
           "Cat_Eng" : __$("#av_section_1 > div > main > div > div > div > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-4.el_after_av_two_third.avia-builder-el-last.restaurant-info.column-top-margin > section > div > ul > li:nth-child(1) > p").text()
         }
 
+        const image2 = _$("#av_section_1 > div > main > div > div > div > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-2.el_after_av_textblock.el_before_av_one_third.restaurant-gallery.column-top-margin > section > div > div > ul > li.slide-2 > a").attr();
+        let img;
+
+        if(image2 != null) {
+          img = {
+            "RNumber" : RNumber,
+            "image1" : _$("#av_section_1 > div > main > div > div > div > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-2.el_after_av_textblock.el_before_av_one_third.restaurant-gallery.column-top-margin > section > div > div > ul > li.slide-1 > a").attr()["href"],
+            "image2" : image2["href"],
+            "image3" : _$("#av_section_1 > div > main > div > div > div > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-2.el_after_av_textblock.el_before_av_one_third.restaurant-gallery.column-top-margin > section > div > div > ul > li.slide-3 > a").attr()["href"]
+          }
+        } else {
+          img = {
+            "RNumber" : RNumber,
+            "image1" : _$("#av_section_1 > div > main > div > div > div > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.first.avia-builder-el-2.el_after_av_textblock.el_before_av_one_third.restaurant-gallery.column-top-margin > section > div > div > ul > li.slide-1 > a").attr()["href"]
+          }
+        }
+
         ko_restaurants.push(ko_res);
         en_restaurants.push(en_res);
         locations.push(loca);
         grades.push(g);
         dishes.push(dish);
+        images.push(img);
 
         RNumber++;
         childNumber++;
@@ -151,7 +170,7 @@ async function crawling() {
       if (index == 20) {
         break;
       }
-      console.log(e);
+      console.log(RNumber + " / " + e);
       return false;
     }
     index++;
@@ -164,6 +183,7 @@ async function crawling() {
   const loc_fields = ['RNumber', "Location_Kor", "Location_Eng"];
   const grade_fields = ['Grade', 'Avg_Price', 'GNum'];
   const dish_fields = ['RNumber', 'Cat_Kor', 'Cat_Eng'];
+  const img_fields = ['RNumber', 'Image1', 'Image2', 'Image3', 'Image4'];
 
   let json2csvParser = new json2csv(ko_fields);
   let csv = json2csvParser.parse(ko_restaurants);
@@ -189,6 +209,11 @@ async function crawling() {
   csv = json2csvParser.parse(dishes);
   csv = csv.replace(/\"/g,"");
   fs.writeFileSync(`${PATHS.raw}/dish.csv`, csv);
+
+  json2csvParser = new json2csv(img_fields);
+  csv = json2csvParser.parse(images);
+  csv = csv.replace(/\"/g,"");
+  fs.writeFileSync(`${PATHS.raw}/img.csv`, csv);
 
   return true;
 }

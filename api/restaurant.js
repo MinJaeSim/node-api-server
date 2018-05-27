@@ -27,6 +27,64 @@ router.get('/', async (req, res, next) => {
     connection.end();
 });
 
+router.get('/simple', async (req, res, next) => {
+    try {
+        if(req.query['loc'] != null) {
+            console.log(req.query['loc']);
+        } else if (req.query['cat'] != null) {
+            console.log(req.query['cat']);
+        } else if (req.query['moneygt'] != null) {
+            console.log(req.query['moneygt']);
+            console.log(req.query['moneylt']);
+        } else if (req.query['grade'] != null) {
+            console.log(req.query['grade']);
+        }
+
+        // connection.query("SELECT * FROM Michelin_Kor", function(err, rows, fields) {
+        //     if (!err) {
+        //         console.log('The solution is: ', rows);
+		//         res.status(200).json(rows);
+	    //     }else
+        //         console.log('Error while performing Query.', err);
+        // });
+        res.status(200);
+        res.status(200).json({"m" : "test"});
+    } catch (err) {
+        message: err.message;
+    }
+
+    // connection.end();
+});
+
+router.get('/test', async (req, res, next) => {
+    // 이름으로 검색
+    // 가격, 등급, 지역, 요리종류
+    //  /a/restaurant/test?a=1&b=2
+    console.log(req.query);
+    const keys = Object.keys(req.query)
+    console.log(keys);
+    console.log(req.query['c']);
+    if(req.query['c'] == null){
+        console.log("TEST");
+    }
+
+    res.status(200).json({"m" : "test"});
+    return;
+    try {
+        connection.query("SELECT * FROM Michelin_Kor", function(err, rows, fields) {
+            if (!err) {
+                console.log('The solution is: ', rows);
+		        res.status(200).json(rows);
+	        }else
+                console.log('Error while performing Query.', err);
+        });
+    } catch (err) {
+        message: err.message;
+    }
+
+    connection.end();
+});
+
 module.exports = router;
 
 
