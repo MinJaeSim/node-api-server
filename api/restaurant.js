@@ -9,9 +9,8 @@ const connection = mysql.createConnection({
     password : db_config.password,
     database : db_config.database
 });
-
+connection.connect();
 async function getDataFromDB(query){
-    connection.connect();
 
     return new Promise((resolve, reject) => {
         try {
@@ -26,31 +25,19 @@ async function getDataFromDB(query){
 }
 
 router.get('/', async (req, res, next) => {
-    // try {
-    //     connection.query("SELECT * FROM Michelin_Kor", function(err, rows, fields) {
-    //         if (!err) {
-    //             console.log('The solution is: ', rows);
-                
-	// 	        res.status(200).json(rows,"");
-	//         }else
-    //             console.log('Error while performing Query.', err);
-    //     });
-    // } catch (err) {
-    //     message: err.message;
-    // }
+    try {
+        const restaurant = await getDataFromDB("SELECT * FROM Michelin_Kor");
+        const url = await getDataFromDB("SELECT * FROM Url");
 
-    // connection.end();
-
-    let restaurant2;
-    const restaurant = await getDataFromDB("SELECT * FROM Michelin_Kor");
-    const url = await getDataFromDB("SELECT * FROM Url");
-
-    for(let i = 0; i < result.length; i++) {
-        restaurant[i]['Url1'] = url[i]['Image1'];
-        restaurant[i]['Url2'] = url[i]['Image2']
-        restaurant[i]['Url3'] = url[i]['Image3']
+        for(let i = 0; i < restaurant.length; i++) {
+            restaurant[i]['Url1'] = url[i]['Image1'];
+            restaurant[i]['Url2'] = url[i]['Image2']
+            restaurant[i]['Url3'] = url[i]['Image3']
+        }
+        res.status(200).json(restaurant);
+    } catch(err) {
+        res.status(400).json({message: err.message});
     }
-    res.status(200).json(restaurant);
 });
 
 router.get('/simple', async (req, res, next) => {
@@ -112,41 +99,13 @@ router.get('/test', async (req, res, next) => {
 });
 
 router.get('/test2', async (req, res, next) => {
-    let result1;
-    let result2;
     try {
-        connection.query("SELECT * FROM DEPARTMENT", function(err, rows, fields) {
-            if (!err) {
-                console.log('The solution is: ', rows);
-                result1 = rows; 
-		    
-	        }else
-                console.log('Error while performing Query.', err);
-        });
-    } catch (err) {
-        message: err.message;
+        const result1 = await getDataFromDB("SELECT * FROM DEPARTMENT");
+        const result2 = await getDataFromDB("SELECT * FROM PROJECT");
+        res.status(200).json(result1);
+    } catch(err) {
+        res.status(400).json({message: err.message});
     }
-
-    try {
-        connection.query("SELECT * FROM PROJECT", function(err, rows, fields) {
-            if (!err) {
-                console.log('The solution is: ', rows);
-                result2 = rows; 
-                
-                for(let i = 0; i < result1.length; i++) {
-                    result1[i]['url'] = result2[i]['DNUMBER']
-                }
-
-                res.status(200).json(result1);
-	        }else
-                console.log('Error while performing Query.', err);
-        });
-    } catch (err) {
-        message: err.message;
-    }
-    
-    
-    connection.end();
 });
 
 module.exports = router;
