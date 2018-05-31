@@ -10,6 +10,7 @@ const connection = mysql.createConnection({
     database : db_config.database
 });
 connection.connect();
+
 async function getDataFromDB(query){
 
     return new Promise((resolve, reject) => {
