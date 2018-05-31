@@ -12,19 +12,54 @@ const connection = mysql.createConnection({
 connection.connect();
 
 router.get('/', async (req, res, next) => {
+    // try {
+    //     connection.query("SELECT * FROM Michelin_Kor", function(err, rows, fields) {
+    //         if (!err) {
+    //             console.log('The solution is: ', rows);
+                
+	// 	        res.status(200).json(rows,"");
+	//         }else
+    //             console.log('Error while performing Query.', err);
+    //     });
+    // } catch (err) {
+    //     message: err.message;
+    // }
+
+    // connection.end();
+
+    let restaurant;
     try {
         connection.query("SELECT * FROM Michelin_Kor", function(err, rows, fields) {
-            if (!err) {
-                console.log('The solution is: ', rows);
-                
-		        res.status(200).json(rows,"");
-	        }else
+            if (!err) 
+                restaurant = rows; 
+	        else
                 console.log('Error while performing Query.', err);
         });
     } catch (err) {
         message: err.message;
     }
 
+    try {
+        connection.query("SELECT * FROM Url", function(err, rows, fields) {
+            if (!err) {
+                
+                
+                for(let i = 0; i < result.length; i++) {
+                    restaurant[i]['Url1'] = rows[i]['Image1'];
+                    restaurant[i]['Url2'] = rows[i]['Image2']
+                    restaurant[i]['Url3'] = rows[i]['Image3']
+                }
+
+                console.log('The solution is: ', restaurant);
+                res.status(200).json(restaurant);
+	        }else
+                console.log('Error while performing Query.', err);
+        });
+    } catch (err) {
+        message: err.message;
+    }
+    
+    
     connection.end();
 });
 
@@ -92,28 +127,35 @@ router.get('/test2', async (req, res, next) => {
     try {
         connection.query("SELECT * FROM DEPARTMENT", function(err, rows, fields) {
             if (!err) {
-                console.log('The solution1 is: ', rows);
+                console.log('The solution is: ', rows);
                 result1 = rows; 
-            
-                connection.query("SELECT * FROM PROJECT", function(err, rows, fields) {
-                    if (!err) {
-                        console.log('The solution is: ', rows);
-                        result2 = rows; 
-                        
-                        for(let i = 0; i < result1.length; i++) {
-                            result1[i]['url'] = result2[i]['DNUMBER']
-                        }
-        
-                        res.status(200).json(result1);
-                    }else
-                        console.log('Error while performing Query.', err);
-                });
-            }
-        }); 
+		    
+	        }else
+                console.log('Error while performing Query.', err);
+        });
     } catch (err) {
         message: err.message;
     }
 
+    try {
+        connection.query("SELECT * FROM PROJECT", function(err, rows, fields) {
+            if (!err) {
+                console.log('The solution is: ', rows);
+                result2 = rows; 
+                
+                for(let i = 0; i < result1.length; i++) {
+                    result1[i]['url'] = result2[i]['DNUMBER']
+                }
+
+                res.status(200).json(result1);
+	        }else
+                console.log('Error while performing Query.', err);
+        });
+    } catch (err) {
+        message: err.message;
+    }
+    
+    
     connection.end();
 });
 
