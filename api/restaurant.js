@@ -16,7 +16,8 @@ router.get('/', async (req, res, next) => {
         connection.query("SELECT * FROM Michelin_Kor", function(err, rows, fields) {
             if (!err) {
                 console.log('The solution is: ', rows);
-		        res.status(200).json(rows);
+                
+		        res.status(200).json(rows,"");
 	        }else
                 console.log('Error while performing Query.', err);
         });
@@ -78,6 +79,37 @@ router.get('/test', async (req, res, next) => {
 	        }else
                 console.log('Error while performing Query.', err);
         });
+    } catch (err) {
+        message: err.message;
+    }
+
+    connection.end();
+});
+
+router.get('/test2', async (req, res, next) => {
+    let result1;
+    let result2;
+    try {
+        connection.query("SELECT * FROM DEPARTMENT", function(err, rows, fields) {
+            if (!err) {
+                console.log('The solution1 is: ', rows);
+                result1 = rows; 
+            
+                connection.query("SELECT * FROM PROJECT", function(err, rows, fields) {
+                    if (!err) {
+                        console.log('The solution is: ', rows);
+                        result2 = rows; 
+                        
+                        for(let i = 0; i < result1.length; i++) {
+                            result1[i]['url'] = result2[i]['DNUMBER']
+                        }
+        
+                        res.status(200).json(result1);
+                    }else
+                        console.log('Error while performing Query.', err);
+                });
+            }
+        }); 
     } catch (err) {
         message: err.message;
     }
