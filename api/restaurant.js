@@ -9,7 +9,21 @@ const connection = mysql.createConnection({
     password : db_config.password,
     database : db_config.database
 });
-connection.connect();
+
+async function getDataFromDB(query){
+    connection.connect();
+
+    return new Promise((resolve, reject) => {
+        try {
+            connection.query(query, function(err, rows, fields) {
+                resolve(rows); 
+            });
+        } catch (err) {
+            reject(err);
+        } 
+    });
+    connection.end();
+}
 
 router.get('/', async (req, res, next) => {
     // try {
@@ -27,40 +41,16 @@ router.get('/', async (req, res, next) => {
 
     // connection.end();
 
-    let restaurant;
-    try {
-        connection.query("SELECT * FROM Michelin_Kor", function(err, rows, fields) {
-            if (!err) 
-                restaurant = rows; 
-	        else
-                console.log('Error while performing Query.', err);
-        });
-    } catch (err) {
-        message: err.message;
-    }
+    let restaurant2;
+    const restaurant = await getDataFromDB("SELECT * FROM Michelin_Kor");
+    const url = await getDataFromDB("SELECT * FROM Url");
 
-    try {
-        connection.query("SELECT * FROM Url", function(err, rows, fields) {
-            if (!err) {
-                
-                
-                for(let i = 0; i < result.length; i++) {
-                    restaurant[i]['Url1'] = rows[i]['Image1'];
-                    restaurant[i]['Url2'] = rows[i]['Image2']
-                    restaurant[i]['Url3'] = rows[i]['Image3']
-                }
-
-                console.log('The solution is: ', restaurant);
-                res.status(200).json(restaurant);
-	        }else
-                console.log('Error while performing Query.', err);
-        });
-    } catch (err) {
-        message: err.message;
+    for(let i = 0; i < result.length; i++) {
+        restaurant[i]['Url1'] = url[i]['Image1'];
+        restaurant[i]['Url2'] = url[i]['Image2']
+        restaurant[i]['Url3'] = url[i]['Image3']
     }
-    
-    
-    connection.end();
+    res.status(200).json(restaurant);
 });
 
 router.get('/simple', async (req, res, next) => {
