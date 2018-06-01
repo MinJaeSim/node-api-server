@@ -32,9 +32,9 @@ router.get('/', async (req, res, next) => {
         const category = await getDataFromDB("SELECT * FROM Dish_Category");
 
         for(let i = 0; i < restaurant.length; i++) {
-            restaurant[i]['Url1'] = url[i]['Image1'];
-            restaurant[i]['Url2'] = url[i]['Image2'];
-            restaurant[i]['Url3'] = url[i]['Image3'];
+            restaurant[i]['Image1'] = url[i]['Image1'];
+            restaurant[i]['Image2'] = url[i]['Image2'];
+            restaurant[i]['Image3'] = url[i]['Image3'];
             restaurant[i]['Category'] = category[i]['Cat_Kor'];
         }
         res.status(200).json(restaurant);
