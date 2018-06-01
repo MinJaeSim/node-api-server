@@ -20,7 +20,7 @@ async function getDataFromDB(query){
             });
         } catch (err) {
             reject(err);
-        } 
+        }
     });
     connection.end();
 }
@@ -45,31 +45,43 @@ router.get('/', async (req, res, next) => {
 
 router.get('/simple', async (req, res, next) => {
     try {
-        if(req.query['loc'] != null) {
+        if(req.query['loc'].length > 0) {
             console.log("loc " + req.query['loc']);
-            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Location_Kor LIKE "%${req.query['loc']}%" GROUP BY Url.RNumber`);
+            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Url.RNumber = Dish_Category.RNumber AND Location_Kor LIKE "%${req.query['loc']}%" GROUP BY Url.RNumber`);
             res.status(200).json(restaurant);
         }
-        if (req.query['cat'] != null) {
+        if (req.query['cat'].length > 0) {
             console.log("cat " + req.query['cat']);
             const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Url.RNumber = Dish_Category.RNumber AND Cat_Kor LIKE "%${req.query['cat']}%" GROUP BY Url.RNumber`);
             res.status(200).json(restaurant);
         }
-        if (req.query['name'] != null) {
+        if (req.query['name'].length > 0) {
             console.log("name " + req.query['name']);
-            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND KName LIKE "%${req.query['name']}%" GROUP BY Url.RNumber`);
+            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Url.RNumber = Dish_Category.RNumber AND KName LIKE "%${req.query['name']}%" GROUP BY Url.RNumber`);
             res.status(200).json(restaurant);
         }
+    }  catch(err) {
+        res.status(400).json({message: err.message});
+    }
+});
 
-        // if (req.query['moneygt'] != null) {
-        //     console.log(req.query['moneygt']);
-        //     console.log(req.query['moneylt']);
-        // } 
-        // if (req.query['grade'] != null) {
-        //     console.log(req.query['grade']);
-        // }
-        
-        
+router.get('/complex', async (req, res, next) => {
+    try {
+        if(req.query['loc'].length > 0) {
+            console.log("loc " + req.query['loc']);
+            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Url.RNumber = Dish_Category.RNumber AND Location_Kor LIKE "%${req.query['loc']}%" GROUP BY Url.RNumber`);
+            res.status(200).json(restaurant);
+        }
+        if (req.query['cat'].length > 0) {
+            console.log("cat " + req.query['cat']);
+            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Url.RNumber = Dish_Category.RNumber AND Cat_Kor LIKE "%${req.query['cat']}%" GROUP BY Url.RNumber`);
+            res.status(200).json(restaurant);
+        }
+        if (req.query['name'].length > 0) {
+            console.log("name " + req.query['name']);
+            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Url.RNumber = Dish_Category.RNumber AND KName LIKE "%${req.query['name']}%" GROUP BY Url.RNumber`);
+            res.status(200).json(restaurant);
+        }        
     }  catch(err) {
         res.status(400).json({message: err.message});
     }
