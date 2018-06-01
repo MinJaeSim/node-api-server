@@ -52,7 +52,7 @@ router.get('/simple', async (req, res, next) => {
         }
         if (req.query['cat'] != null) {
             console.log("cat " + req.query['cat']);
-            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Cat_Kor LIKE "%${req.query['cat']}%" GROUP BY Url.RNumber`);
+            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Url.RNumber = Dish_Category.RNumber AND Cat_Kor LIKE "%${req.query['cat']}%" GROUP BY Url.RNumber`);
             res.status(200).json(restaurant);
         }
         if (req.query['name'] != null) {
