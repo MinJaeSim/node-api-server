@@ -46,30 +46,33 @@ router.get('/', async (req, res, next) => {
 router.get('/simple', async (req, res, next) => {
     try {
         if(req.query['loc'] != null) {
-            console.log(req.query['loc']);
-        } else if (req.query['cat'] != null) {
-            console.log(req.query['cat']);
-        } else if (req.query['moneygt'] != null) {
-            console.log(req.query['moneygt']);
-            console.log(req.query['moneylt']);
-        } else if (req.query['grade'] != null) {
-            console.log(req.query['grade']);
+            console.log("loc " + req.query['loc']);
+            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Location_Kor LIKE "%${req.query['loc']}%" GROUP BY Url.RNumber`);
+            res.status(200).json(restaurant);
+        }
+        if (req.query['cat'] != null) {
+            console.log("cat " + req.query['cat']);
+            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Cat_Kor LIKE "%${req.query['cat']}%" GROUP BY Url.RNumber`);
+            res.status(200).json(restaurant);
+        }
+        if (req.query['name'] != null) {
+            console.log("name " + req.query['name']);
+            const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND KName LIKE "%${req.query['name']}%" GROUP BY Url.RNumber`);
+            res.status(200).json(restaurant);
         }
 
-        // connection.query("SELECT * FROM Michelin_Kor", function(err, rows, fields) {
-        //     if (!err) {
-        //         console.log('The solution is: ', rows);
-		//         res.status(200).json(rows);
-	    //     }else
-        //         console.log('Error while performing Query.', err);
-        // });
-        res.status(200);
-        res.status(200).json({"m" : "test"});
-    } catch (err) {
-        message: err.message;
+        // if (req.query['moneygt'] != null) {
+        //     console.log(req.query['moneygt']);
+        //     console.log(req.query['moneylt']);
+        // } 
+        // if (req.query['grade'] != null) {
+        //     console.log(req.query['grade']);
+        // }
+        
+        
+    }  catch(err) {
+        res.status(400).json({message: err.message});
     }
-
-    // connection.end();
 });
 
 router.get('/test', async (req, res, next) => {
