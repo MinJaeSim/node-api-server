@@ -10,17 +10,17 @@ RNumber,KName,Grade,Phone_Num,Homepage,Price
 8,구복만두,4,02-797-8656,goobokmandoo.modoo.at,5000
 9,권숙수,2,02-542-6268,www.kwonsooksoo.com,95000
 10,꼼 모아,5,02-6217-5252,,38000
-11,꽃 밥에피다,4,02-732-0276,kottbob.modoo.at,27000
+11,꽃, 밥에피다,4,02-732-0276,kottbob.modoo.at,27000
 12,꽃지,5,02-561-8788,kkotji.modoo.at,34000
 13,남포면옥,4,02-777-3131,,30000
 14,능라도,4,02-569-8939,neungrado.modoo.at,37000
 15,다담,5,02-518-6161,www.thedadam.com,66000
-16,다이닝 인 스페이스,4,02-747-8105,,60000
+16,다이닝 인 스페이스,3,02-747-8105,,60000
 17,달 식탁,5,02-511-9440,dalsiktak.modoo.at,43000
 18,대성집,4,02-735-4259,daesungjip.modoo.at,11000
 19,더 그린테이블,5,02-591-2672,www.thegreentable.co.kr,41000
 20,도림,5,02-317-7101,www.lottehotel.com/seoul,166000
-21,도사,4,02-516-3672,www.dosaseoul.com,64000
+21,도사,3,02-516-3672,www.dosaseoul.com,64000
 22,도우룸,5,02-535-9386,www.soignerestaurantgroup.com,70000
 23,두가헌,5,02-3210-2100,www.dugahun.com,72000
 24,두레유,5,02-743-2468,www.dooreyoo.com,88000
@@ -28,7 +28,7 @@ RNumber,KName,Grade,Phone_Num,Homepage,Price
 26,뚜또 베네,5,02-546-1489,,54000
 27,라 모라,5,02-595-3997,lamorra.modoo.at/,84000
 28,라 쿠치나,5,02-794-6005,www.la-cucina.co.kr,75000
-29,라미띠에,4,02-546-9621,lamitie.modoo.at/,68000
+29,라미띠에,3,02-546-9621,lamitie.modoo.at/,68000
 30,라연,1,02-2230-3367,www.shillahotels.com,138000
 31,랑빠스 81,5,070-7779-8181,limpasse81.modoo.at/,34000
 32,렁팡스,5,02-465-7117,www.lenfance.net,36000
@@ -36,7 +36,7 @@ RNumber,KName,Grade,Phone_Num,Homepage,Price
 34,루이 쌍끄,5,02-547-1259,louiscinq.modoo.at,50000
 35,류니끄,5,02-546-9279,www.ryunique.co.kr,117000
 36,르 꼬숑,5,02-6032-1300,www.lecochon.co.kr,103000
-37,리스토란테 에오,4,02-3445-1926,www.ristoranteeo.com,67000
+37,리스토란테 에오,3,02-3445-1926,www.ristoranteeo.com,67000
 38,마누 테라스,5,02-543-9020,www.manuterrace.com,54000
 39,마포 양지 설렁탕,5,02-716-8616,mapoyangji.modoo.at/,18000
 40,마포옥,4,02-716-6661,www.mapook.com,21000
@@ -55,8 +55,8 @@ RNumber,KName,Grade,Phone_Num,Homepage,Price
 53,미코,5,02-3446-1227,,62000
 54,민스 키친,5,02-544-1007,www.minskitchen.kr,50000
 55,밀본,4,02-499-9801,mealbon.modoo.at/,7000
-56,밍글스,4,02-515-7306,www.restaurant-mingles.com,70000
-57,발우공양,4,02-733-2081,www.balwoo.or.kr,53000
+56,밍글스,3,02-515-7306,www.restaurant-mingles.com,70000
+57,발우공양,3,02-733-2081,www.balwoo.or.kr,53000
 58,백년 토종 삼계탕,5,02-747-5535,100samgyetang.modoo.at,20000
 59,백년옥,4,02-523-2860,baengnyeonok.modoo.at,15000
 60,백리향,5,02-789-5741,www.63restaurant.co.kr,156000
@@ -66,7 +66,7 @@ RNumber,KName,Grade,Phone_Num,Homepage,Price
 64,보나세라,5,02-543-6668,www.buonasera.co.kr,75000
 65,보름쇠,5,02-569-9967,boreumsoei.modoo.at,33000
 66,보칼리노,5,02-6388-5500,www.fourseasons.com/seoul,111000
-67,보트르 메종,4,02-549-3800,votremasion.modoo.at,57000
+67,보트르 메종,3,02-549-3800,votremasion.modoo.at,57000
 68,볼트 스테이크하우스,5,02-544-9235,vaultsteakhouse.co.kr,70000
 69,볼피노,5,010-2249-1571,,60000
 70,봉밀가,5,02-546-2305,,18000
@@ -76,7 +76,7 @@ RNumber,KName,Grade,Phone_Num,Homepage,Price
 74,북막골,4,02-730-0980,www.7300980.com,23000
 75,브레라,5,02-2236-0770,www.brera.kr,26000
 76,비스트로 드 욘트빌,5,02-541-1550,,72000
-77,비채나,4,02-3213-1260~1,www.bicena.com,103000
+77,비채나,3,02-3213-1260~1,www.bicena.com,103000
 78,삼원가든,5,02-548-3030,www.samwongarden.com,52000
 79,삼청동 수제비,4,02-735-2965,samcheongsujeb.modoo.at,8000
 80,서울 다이닝,5,02-6325-6321,www.seoul-dining.com,42000
@@ -90,12 +90,12 @@ RNumber,KName,Grade,Phone_Num,Homepage,Price
 88,스시만,5,02-533-0181,sushiman.modoo.at,92000
 89,스시조,5,02-317-0373,www.echosunhotel.com,183000
 90,스시효,5,02-545-0023,sushihyo.modoo.at,101000
-91,스와니예,4,02-3477-9386,www.soignerestaurantgroup.com,67000
+91,스와니예,3,02-3477-9386,www.soignerestaurantgroup.com,67000
 92,스테이,5,02-3213-1231,www.lottehotel.com/signielseoul/ko/,115000
 93,스테이크 하우스,5,02-799-8273,seoul.grand.hyatt.com,91000
 94,아리랑,5,02-752-1342,www.arirangcook.com,36000
 95,안씨 막걸리,5,010-9965-5112,ahnmakgeolli.modoo.at/,29000
-96,알라 프리마,4,02-511-2555,allaprima.modoo.at,57000
+96,알라 프리마,3,02-511-2555,allaprima.modoo.at,57000
 97,양양 메밀 막국수,4,02-3482-3738,yangyangkuksu.modoo.at/,11000
 98,에머이,4,02-733-0588,emoilove.modoo.at,9000
 99,역전회관,4,02-703-0019,www.yukjeon.com,26000
@@ -116,26 +116,26 @@ RNumber,KName,Grade,Phone_Num,Homepage,Price
 114,우오,5,02-518-4224,www.theuo.co.kr,100000
 115,우육미엔,4,02-798-5556,,7000
 116,우참판,5,02-537-5940,www.woochampan.com,38000
-117,유 유안,4,02-6388-5500,www.fourseasons.com/seoul,153000
+117,유 유안,3,02-6388-5500,www.fourseasons.com/seoul,153000
 118,이나니와 요스케,4,02-772-9994,,29000
 119,이도 맨션,5,02-785-0909,,55000
 120,이문 설농탕,4,02-733-6526,imun.modoo.at,13000
 121,이십사절기,5,02-518-4818,www.24seasons.co.kr,37000
 122,이치류,5,02-3144-1312,www.ichiryu.kr/,23000
 123,이태리재,5,070-4233-6262,italyjae.modoo.at,40000
-124,익스퀴진,4,02-542-6921,,47000
+124,익스퀴진,3,02-542-6921,,47000
 125,일호식,5,02-794-2648,,18000
 126,임병주 산동 칼국수,4,02-3473-7972,sandongkalguksu.modoo.at,15000
 127,자하 손만두,4,02-379-2648,www.sonmandoo.com,26000
 128,정식당,2,02-517-4654,www.jungsik.kr,98000
 129,정인면옥,4,02-2683-2615,junginmyeonok.modoo.at,16000
-130,제로 컴플렉스,4,02-532-0876,,62000
+130,제로 컴플렉스,3,02-532-0876,,62000
 131,주반,5,02-3210-3737,juban.modoo.at/,15000
-132,주옥,4,02-518-9393,thejoook.modoo.at,42000
+132,주옥,3,02-518-9393,thejoook.modoo.at,42000
 133,줄라이,5,02-534-9544,www.julyrestaurant.org,54000
 134,진미 평양냉면,4,02-515-3469,jinmipy.modoo.at/,15000
 135,진미식당,5,02-3211-4468,thejinmi.modoo.at,25000
-136,진진,4,070-5035-8878,jinjinseoul.modoo.at,28000
+136,진진,3,070-5035-8878,jinjinseoul.modoo.at,28000
 137,찬양집,4,02-743-1384,chanyangjip.modoo.at,4000
 138,채근담,5,02-555-9173,www.chaegundaam.com,41000
 139,쵸이닷,5,02-518-0318,,60000
@@ -145,18 +145,18 @@ RNumber,KName,Grade,Phone_Num,Homepage,Price
 143,코지마,2,02-2056-1291,kojima.modoo.at,192000
 144,콘티넨탈,5,02-2230-3369,www.shillahotels.com,151000
 145,크리스탈 제이드,5,02-3789-8088,www.crystaljade.com,64000
-146,큰기와집,4,02-722-9024,keunkiwajip.modoo.at,29000
+146,큰기와집,3,02-722-9024,keunkiwajip.modoo.at,29000
 147,태번 38,5,02-522-3738,,62000
 148,텅 앤 그루브 조인트,5,02-790-7036,tngj.modoo.at,24000
 149,테이블 34,5,02-559-7631,www.grandicparnas.com,122000
-150,테이블 포 포,4,02-3478-0717,tablefor4.modoo.at,45000
+150,테이블 포 포,3,02-3478-0717,tablefor4.modoo.at,45000
 151,톡톡,5,02-542-3030,www.toctocseoul.com,83000
 152,툭툭 누들 타이,4,070-4407-5130,tuktuknoodle.modoo.at,16000
 153,트라토리아 몰토,5,02-303-1022,,50000
 154,파씨오네,5,02-546-7719,www.ipassionne.com,38000
 155,팔레 드 고몽,5,02-546-8877,palaisdegaumont.modoo.at,68000
 156,평양면옥,5,02-2267-7784,pyungyangmyunok.modoo.at,36000
-157,품,4,02-777-9007,www.poomseoul.com,109000
+157,품,3,02-777-9007,www.poomseoul.com,109000
 158,플라워 차일드,5,02-553-2574,www.flowerchildkorea.com,52000
 159,피양콩 할마니,4,02-508-0476,piyang.modoo.at,19000
 160,필경재,5,02-445-2115,www.philkyungjae.co.kr,127000

@@ -34,6 +34,26 @@ async function crawling() {
     });
   }
 
+  let avg_price1 = 0;
+  let avg_price_count1 = 0;
+  let g1 = {"GNum" : 1};
+
+  let avg_price2 = 0;
+  let avg_price_count2 = 0;
+  let g2 = {"GNum" : 2};
+
+  let avg_price3 = 0;
+  let avg_price_count3 = 0;
+  let g3 = {"GNum" : 3};
+
+  let avg_price4 = 0;
+  let avg_price_count4 = 0;
+  let g4 = {"GNum" : 4};
+
+  let avg_price5 = 0;
+  let avg_price_count5 = 0;
+  let g5 = {"GNum" : 5};
+
   while (index <= 20) {
     console.log(`collect from: ${index} ...`);
     const path = `https://guide.michelin.co.kr/ko/restaurant/page/${index}`;
@@ -83,21 +103,38 @@ async function crawling() {
 
         ko_res.Price = price;
 
-        let grade = _$("#av_section_2 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-11.el_after_av_two_third.avia-builder-el-last.restaurant-services > section > div > table > tbody > tr:nth-child(1) > td").text().length;
-        switch(grade) {
+        let grade = _$("#av_section_2 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_one_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-11.el_after_av_two_third.avia-builder-el-last.restaurant-services > section > div > table > tbody > tr:nth-child(1) > td").text();
+
+        switch(grade.length) {
           case 26 :
             ko_res.Grade = 1; // 3스타
+            avg_price1 += price;
+            avg_price_count1++;
+            g1["Grade"] = grade;
             break;
           case 25 : 
             ko_res.Grade = 2;
+            avg_price2 += price;
+            avg_price_count2++;
+            g2["Grade"] = grade;
             break;
           case 7 :
             ko_res.Grade = 3;
+            avg_price3 += price;
+            avg_price_count3++;
+            g3["Grade"] = grade;
+            break;
           case 38 :
             ko_res.Grade = 4;
+            avg_price4 += price;
+            avg_price_count4++;
+            g4["Grade"] = grade;
             break;
           case 19 :
             ko_res.Grade = 5;
+            avg_price5 += price;
+            avg_price_count5++;
+            g5["Grade"] = grade;
             break;
           default : 
             ko_res.Grade = 0;
@@ -123,12 +160,6 @@ async function crawling() {
           "RNumber" : ko_res.RNumber,
           "Location_Kor" : _$("#av_section_3 > div > div > div > div > div.flex_column_table.av-equal-height-column-flextable > div.flex_column.av_two_third.flex_column_table_cell.av-equal-height-column.av-align-top.av-zero-column-padding.avia-builder-el-17.el_after_av_one_third.avia-builder-el-last.restaurant-map > section > div > ul > li > span").text().split(" ")[0],
           "Location_Eng" :location[location.length - 2]
-        }
-
-        const g = {
-          "Grade" : ko_res.Grade,
-          "Avg_Price" : ko_res.Price,
-          "GNum" : RNumber
         }
 
         const dish = {
@@ -157,7 +188,6 @@ async function crawling() {
         ko_restaurants.push(ko_res);
         en_restaurants.push(en_res);
         locations.push(loca);
-        grades.push(g);
         dishes.push(dish);
         images.push(img);
 
@@ -177,6 +207,36 @@ async function crawling() {
     console.log('wait');
     await wait(500);
   }
+  avg_price1 /= 1000;
+  avg_price1 = Math.round(avg_price1 / avg_price_count1);
+  avg_price1 *= 1000;
+  g1["Avg_Price"] = avg_price1;
+  
+  avg_price2 /= 1000;
+  avg_price2 = Math.round(avg_price2 / avg_price_count2);
+  avg_price2 *= 1000;
+  g2["Avg_Price"] = avg_price2;
+
+  avg_price3 /= 1000;
+  avg_price3 = Math.round(avg_price3 / avg_price_count3);
+  avg_price3 *= 1000;
+  g3["Avg_Price"] = avg_price3;
+
+  avg_price4 /= 1000;
+  avg_price4 = Math.round(avg_price4 / avg_price_count4);
+  avg_price4 *= 1000;
+  g4["Avg_Price"] = avg_price4;
+
+  avg_price5 /= 1000;
+  avg_price5 = Math.round(avg_price5 / avg_price_count5);
+  avg_price5 *= 1000;
+  g5["Avg_Price"] = avg_price5;
+
+  grades.push(g1);
+  grades.push(g2);
+  grades.push(g3);
+  grades.push(g4);
+  grades.push(g5);
 
   const ko_fields = ['RNumber', 'KName','Grade', 'Phone_Num', 'Homepage', 'Price'];
   const en_fields = ['RNumber', 'EName','Grade', 'Phone_Num', 'Homepage', 'Price'];
