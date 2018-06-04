@@ -60,12 +60,16 @@ router.get('/ko/simple', async (req, res, next) => {
 
 router.get('/ko/complex', async (req, res, next) => {
     try {
-	console.log("loc " + req.query['loc']);
+    console.log("loc " + req.query['loc']);
 	console.log("cat " + req.query['cat']);
 	console.log("min " + req.query['min']);
 	console.log("max " + req.query['max']);
-	console.log("grade " + req.query['grade']);
-	const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName as Name, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Url.RNumber = Dish_Category.RNumber AND Cat_Kor LIKE "%${req.query['cat']}%" AND Location_Kor LIKE "%${req.query['loc']}%" AND Price >= ${req.query['min']} AND Price <= ${req.query['max']} AND Grade = ${req.query['grade']} GROUP BY Url.RNumber`);
+    console.log("grade " + req.query['grade']);
+    const restaurant;
+    if(req.query['grade'] == -1)
+        restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName as Name, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Url.RNumber = Dish_Category.RNumber AND Cat_Kor LIKE "%${req.query['cat']}%" AND Location_Kor LIKE "%${req.query['loc']}%" AND Price >= ${req.query['min']} AND Price <= ${req.query['max']} GROUP BY Url.RNumber`);
+    else
+        restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, KName as Name, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Kor as Category FROM Michelin_Kor, Michelin_Location, Url, Dish_Category Where Michelin_Kor.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Kor.RNumber AND Url.RNumber = Dish_Category.RNumber AND Cat_Kor LIKE "%${req.query['cat']}%" AND Location_Kor LIKE "%${req.query['loc']}%" AND Price >= ${req.query['min']} AND Price <= ${req.query['max']} AND Grade = ${req.query['grade']} GROUP BY Url.RNumber`);
 	res.status(200).json(restaurant);     
     }  catch(err) {
         res.status(400).json({message: err.message});
@@ -105,12 +109,16 @@ router.get('/en/simple', async (req, res, next) => {
 
 router.get('/en/complex', async (req, res, next) => {
     try {
-	console.log("loc " + req.query['loc']);
+    console.log("loc " + req.query['loc']);
 	console.log("cat " + req.query['cat']);
 	console.log("min " + req.query['min']);
 	console.log("max " + req.query['max']);
-	console.log("grade " + req.query['grade']);
-	const restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, EName as Name, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Eng as Category FROM Michelin_Eng, Michelin_Location, Url, Dish_Category Where Michelin_Eng.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Eng.RNumber AND Url.RNumber = Dish_Category.RNumber AND Cat_Eng LIKE "%${req.query['cat']}%" AND Location_Eng LIKE "%${req.query['loc']}%" AND Price >= ${req.query['min']} AND Price <= ${req.query['max']} AND Grade = ${req.query['grade']} GROUP BY Url.RNumber`);
+    console.log("grade " + req.query['grade']);
+    const restaurant;
+    if(req.query['grade'] == -1)
+        restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, EName as Name, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Eng as Category FROM Michelin_Eng, Michelin_Location, Url, Dish_Category Where Michelin_Eng.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Eng.RNumber AND Url.RNumber = Dish_Category.RNumber AND Cat_Eng LIKE "%${req.query['cat']}%" AND Location_Eng LIKE "%${req.query['loc']}%" AND Price >= ${req.query['min']} AND Price <= ${req.query['max']} GROUP BY Url.RNumber`);
+    else 
+        restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, EName as Name, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Eng as Category FROM Michelin_Eng, Michelin_Location, Url, Dish_Category Where Michelin_Eng.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Eng.RNumber AND Url.RNumber = Dish_Category.RNumber AND Cat_Eng LIKE "%${req.query['cat']}%" AND Location_Eng LIKE "%${req.query['loc']}%" AND Price >= ${req.query['min']} AND Price <= ${req.query['max']} AND Grade = ${req.query['grade']} GROUP BY Url.RNumber`);
 	res.status(200).json(restaurant);     
     }  catch(err) {
         res.status(400).json({message: err.message});
