@@ -1,6 +1,6 @@
-GNum,Grade,Avg_Price
-1,요리가 훌륭하여 특별한 여행을 떠날 가치가 있음,154000
-2,요리가 훌륭하여 멀리 찾아갈 만한 가치가 있음,141000
-3,요리가 훌륭함,66000
-4,35000원 이하의 합리적인 가격에 훌륭한 음식을 제공하는 레스토랑,18000
-5,좋은 요리를 맛볼 수 있는 레스토랑,66000
+GNum,Grade_Kor,Grade_Eng,Avg_Price
+1,요리가 훌륭하여 특별한 여행을 떠날 가치가 있음,Exceptional cuisine, worth a special journey,154000
+2,요리가 훌륭하여 멀리 찾아갈 만한 가치가 있음,Excellent cooking, worth a detour,141000
+3,요리가 훌륭함,A very good restaurant in its category,66000
+4,35000원 이하의 합리적인 가격에 훌륭한 음식을 제공하는 레스토랑,Inspector’s favourite for good value under ₩35,000,18000
+5,좋은 요리를 맛볼 수 있는 레스토랑,Fresh ingredients, capably prepared,66000

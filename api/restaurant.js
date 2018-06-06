@@ -76,6 +76,15 @@ router.get('/ko/complex', async (req, res, next) => {
     }
 });
 
+router.get('/ko/grade', async (req, res, next) => {
+    try {
+        restaurant = await getDataFromDB(`SELECT Grade_Kor FROM Grade Where GNum = ${req.query['grade']}`);
+        res.status(200).json(restaurant);     
+    }  catch(err) {
+        res.status(400).json({message: err.message});
+    }
+});
+
 router.get('/en/', async (req, res, next) => {
     try {
         const restaurant = await getDataFromDB("SELECT DISTINCT Url.RNumber, EName as Name, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Eng as Category FROM Michelin_Eng, Michelin_Location, Url, Dish_Category Where Michelin_Eng.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Eng.RNumber AND Url.RNumber = Dish_Category.RNumber GROUP BY Url.RNumber");
@@ -120,6 +129,15 @@ router.get('/en/complex', async (req, res, next) => {
     else 
         restaurant = await getDataFromDB(`SELECT DISTINCT Url.RNumber, EName as Name, Grade, Phone_Num, Homepage, Price, Image1, Image2, Image3, Cat_Eng as Category FROM Michelin_Eng, Michelin_Location, Url, Dish_Category Where Michelin_Eng.RNumber = Michelin_Location.RNumber AND Url.RNumber = Michelin_Eng.RNumber AND Url.RNumber = Dish_Category.RNumber AND Cat_Eng LIKE "%${req.query['cat']}%" AND Location_Eng LIKE "%${req.query['loc']}%" AND Price >= ${req.query['min']} AND Price <= ${req.query['max']} AND Grade = ${req.query['grade']} GROUP BY Url.RNumber`);
 	res.status(200).json(restaurant);     
+    }  catch(err) {
+        res.status(400).json({message: err.message});
+    }
+});
+
+router.get('/en/grade', async (req, res, next) => {
+    try {        
+        restaurant = await getDataFromDB(`SELECT Grade_Eng FROM Grade Where GNum = ${req.query['grade']}`);
+	    res.status(200).json(restaurant);     
     }  catch(err) {
         res.status(400).json({message: err.message});
     }
