@@ -78,7 +78,7 @@ router.get('/ko/complex', async (req, res, next) => {
 
 router.get('/ko/grade', async (req, res, next) => {
     try {
-        restaurant = await getDataFromDB(`SELECT Grade_Kor FROM Grade Where GNum = ${req.query['grade']}`);
+        restaurant = await getDataFromDB(`SELECT Grade_Kor as Grade_Desc FROM Grade Where GNum = ${req.query['grade']}`);
         res.status(200).json(restaurant);     
     }  catch(err) {
         res.status(400).json({message: err.message});
@@ -136,7 +136,7 @@ router.get('/en/complex', async (req, res, next) => {
 
 router.get('/en/grade', async (req, res, next) => {
     try {        
-        restaurant = await getDataFromDB(`SELECT Grade_Eng FROM Grade Where GNum = ${req.query['grade']}`);
+        restaurant = await getDataFromDB(`SELECT Grade_Eng as Grade_Desc FROM Grade Where GNum = ${req.query['grade']}`);
 	    res.status(200).json(restaurant);     
     }  catch(err) {
         res.status(400).json({message: err.message});
